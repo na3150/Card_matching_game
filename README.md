@@ -26,3 +26,9 @@ College lecture "Python Programming" assignment✏️
 <h5>▶게임 진행화면<br><br>
 
 ![image](https://user-images.githubusercontent.com/64996121/143766008-dcc8d432-d927-49ba-9145-237e5c69ad05.png)
+
+  
+  
+  
+ <br><br><br><br>
+<h6>참고 영상🔗 https://youtu.be/9G1Chfiakoo
