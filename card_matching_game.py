@@ -2,6 +2,7 @@ import turtle as t
 import random
 import time
 
+#게임이 시작하기 전에 게임 룰을 설명해주는 것도 좋을 듯
 
 def find_card(x, y): #클릭한 카드 찾기
     min_idx = 0
