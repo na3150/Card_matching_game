@@ -1,6 +1,8 @@
+import tkinter
 import turtle as t
 import random
 import time
+from tkinter import *
 
 #게임이 시작하기 전에 게임 룰을 설명해주는 것도 좋을 듯
 
@@ -21,6 +23,10 @@ def score_updata(m):
 def result(m):
     t.goto(0, -60)
     t.write(m, False, "center", ("", 30, "bold"))
+
+#점수판 보여주기
+#def show_scoreboard():
+
 
 def play(x, y):
     global click_num #전역변수 사옹
@@ -48,11 +54,19 @@ def play(x, y):
                 #정답
                 score_updata("정답")
                 if score == 8:
-                    result("Complete")
+                    result("성공")
+                    #show_scoreboard()
             else:
                 score_updata("오답")
                 turtles[first_pick].shape(default_img)
                 turtles[second_pick].shape(default_img)
+
+def button_click():
+    nickname = tx_nickname.get()
+    print("닉네임: " + nickname)
+    window.destroy()
+
+nickname = "" #플레이어 닉네임
 
 #점수 펜 객체 생성
 score_pen = t.Turtle()
@@ -67,6 +81,17 @@ t.up()
 t.ht()
 t.goto(0, 280)
 t.write("🕹 카드 매칭 게임 🕹", False, "center", ("", 30, "bold"))
+
+window = Tk() #tkinter 생성
+window.geometry("250x50")
+window.title("닉네임 입력")
+frame = tkinter.Frame(window)
+frame.pack()
+tx_nickname = tkinter.Entry(frame, width=30, bg='light pink')
+tx_nickname.pack()
+button = tkinter.Button(frame, text="입력완료", command=button_click)
+button.pack()
+window.mainloop()
 
 turtles = []
 pos_x = [-210, -70, 70, 210]
