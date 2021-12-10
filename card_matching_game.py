@@ -113,6 +113,8 @@ def start_game():
     global attempt
     global first_pick
     global second_pick
+    global score_pen
+
 
     # turtle 객체 생성
     t.bgcolor("white")
@@ -122,9 +124,11 @@ def start_game():
     t.goto(0, 280)
     t.write("🕹 카드 매칭 게임 🕹", False, "center", ("", 30, "bold"))
 
+
     turtles = []
     img_list = []
 
+    score_pen.clear()  # 점수 지우기
     score_pen = t.Turtle()
     score_pen.up()
     score_pen.ht()
@@ -136,7 +140,6 @@ def start_game():
     first_pick = ""  # 첫 번째 클릭한 이미지
     second_pick = ""  # 두 번째 클릭한 이미지
 
-    score_updata("시작")
 
     for x in range(4):
         for y in range(4):
@@ -198,6 +201,6 @@ attempt = 0 #시도한 횟수
 first_pick = "" #첫 번째 클릭한 이미지
 second_pick = "" #두 번째 클릭한 이미지
 
-#닉네임 입력받기
-get_nickname()
+#게임 시작
+start_game()
 
