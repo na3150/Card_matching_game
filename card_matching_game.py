@@ -24,7 +24,7 @@ def result(m):
     t.goto(0, -60)
     t.write(m, False, "center", ("", 30, "bold"))
 
-#점수판 보여주기
+
 def show_scoreboard():
     player_list.sort()
 
@@ -73,7 +73,7 @@ def check_more_game():
         # 게임 한번 더 진행
         root.destroy()
         t.reset()
-        reset_game()
+        start_game()
     def btn_no():
         label = Label(root, text="게임이 종료되었습니다", width=300)
         label.pack()
@@ -93,7 +93,7 @@ def get_nickname():
         nickname = tx_nickname.get()
         print("닉네임: " + nickname)
         window.destroy()
-        reset_game()
+        start_game()
     window = Tk()  # tkinter 생성
     window.geometry("250x50")
     window.title("닉네임 입력")
@@ -105,10 +105,9 @@ def get_nickname():
     button.pack()
     window.mainloop()
 
-def reset_game():
+def start_game():
     global turtles
     global img_list
-    global score_pen
     global score
     global click_num
     global attempt
@@ -136,6 +135,8 @@ def reset_game():
     attempt = 0  # 시도한 횟수
     first_pick = ""  # 첫 번째 클릭한 이미지
     second_pick = ""  # 두 번째 클릭한 이미지
+
+    score_updata("시작")
 
     for x in range(4):
         for y in range(4):
@@ -169,6 +170,10 @@ player_list = [] #튜플(시도 횟수, 닉네임) 형태로 저장
 
 pos_x = [-210, -70, 70, 210]
 pos_y = [-250, -110, 30, 170]
+
+'''
+
+'''
 
 turtles = []
 img_list = []
