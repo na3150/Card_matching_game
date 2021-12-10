@@ -27,7 +27,7 @@ def result(m):
     t.write(m, False, "center", ("", 30, "bold"))
 
 
-def show_scoreboard():
+def show_scoreboard(): #점수판 보여주기
     player_list.sort()  # 순위 정렬
     root = Tk()
     root.title("점수판")
@@ -46,7 +46,7 @@ def show_scoreboard():
         label.pack()
         num += 1
 
-def game_rule():
+def game_rule(): #게임 룰 설명
     def checked():
         window.destroy()
         get_nickname()
@@ -57,10 +57,10 @@ def game_rule():
     frame = tkinter.Frame(window)
     frame.pack()
     img = ImageTk.PhotoImage(file='images/how_to_play.PNG', master=window)
-    label = Label(window, image=img,borderwidth=0)
-    label.pack()
-    button = tkinter.Button(frame, text="게임 시작❕", command=checked, width=20)
-    button.pack(side='bottom')
+    label = Label(window, image=img, borderwidth=0)
+    label.pack(side='top')
+    button = tkinter.Button(window, text="게임 시작❕", command=checked, width=20, height=1)
+    button.pack()
     window.mainloop()
 
 
@@ -121,6 +121,7 @@ def check_more_game():
     root.geometry("300x70")
     root.title("한 게임 더❓ ")
     frame = tkinter.Frame(root)
+    frame.configure(bg='white')
     frame.pack()
     label = Label(frame, text="게임을 한번 더 진행하시겠습니까?", width=300)
     label.pack(side="top")
@@ -143,6 +144,7 @@ def get_nickname():
     window.geometry("250x70")
     window.title("닉네임 입력")
     frame = tkinter.Frame(window)
+    frame.configure(bg='white')
     frame.pack()
     label = Label(frame, text="닉네임을 입력해주세요", width=300)
     label.pack()
