@@ -77,14 +77,16 @@ def check_more_game():
     def btn_no():
         label = Label(root, text="게임이 종료되었습니다", width=300)
         label.pack()
-    root.geometry("400x100")
-    root.title("게임을 한번 더 진행하시겠습니까?")
+    root.geometry("300x50")
+    root.title("한 게임 더❓ ")
     frame = tkinter.Frame(root)
     frame.pack()
+    label = Label(frame, text="게임을 한번 더 진행하시겠습니까?", width=300)
+    label.pack(side="top")
     btn_yes = tkinter.Button(frame, text="예", command=btn_yes)
     btn_no = tkinter.Button(frame, text="아니오", command=btn_no)
-    btn_yes.pack()
-    btn_no.pack()
+    btn_yes.pack(side="left")
+    btn_no.pack(side="right")
     root.mainloop()
 
 def get_nickname():
@@ -95,10 +97,12 @@ def get_nickname():
         window.destroy()
         start_game()
     window = Tk()  # tkinter 생성
-    window.geometry("250x50")
+    window.geometry("250x70")
     window.title("닉네임 입력")
     frame = tkinter.Frame(window)
     frame.pack()
+    label = Label(frame, text="닉네임을 입력해주세요", width=300)
+    label.pack()
     tx_nickname = tkinter.Entry(frame, width=30, bg='light pink')
     tx_nickname.pack()
     button = tkinter.Button(frame, text="입력완료", command=button_click)
@@ -115,7 +119,6 @@ def start_game():
     global second_pick
     global score_pen
 
-
     # turtle 객체 생성
     t.bgcolor("white")
     t.setup(700, 700)
@@ -123,7 +126,6 @@ def start_game():
     t.ht()
     t.goto(0, 280)
     t.write("🕹 카드 매칭 게임 🕹", False, "center", ("", 30, "bold"))
-
 
     turtles = []
     img_list = []
@@ -139,7 +141,6 @@ def start_game():
     attempt = 0  # 시도한 횟수
     first_pick = ""  # 첫 번째 클릭한 이미지
     second_pick = ""  # 두 번째 클릭한 이미지
-
 
     for x in range(4):
         for y in range(4):
@@ -174,9 +175,6 @@ player_list = [] #튜플(시도 횟수, 닉네임) 형태로 저장
 pos_x = [-210, -70, 70, 210]
 pos_y = [-250, -110, 30, 170]
 
-'''
-
-'''
 
 turtles = []
 img_list = []
@@ -195,12 +193,13 @@ t.ht()
 t.goto(0, 280)
 t.write("🕹 카드 매칭 게임 🕹", False, "center", ("", 30, "bold"))
 
+nickname = "" #player 닉네임
 click_num = 0 #클릭 횟수 (매 2회 클릭마다 정답 체크)
 score = 0 #점수
 attempt = 0 #시도한 횟수
 first_pick = "" #첫 번째 클릭한 이미지
 second_pick = "" #두 번째 클릭한 이미지
 
-#게임 시작
-start_game()
+#닉네임 입력받으며 게임 시작
+get_nickname()
 
