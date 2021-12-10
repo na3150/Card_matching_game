@@ -58,7 +58,7 @@ def play(x, y):
                 if score == 8:
                     result("성공")
                     player_list.append((attempt, nickname))
-                    print((attempt, ": ", nickname))
+                    print((attempt, nickname))
                     #show_scoreboard()
                     check_more_game()
             else:
@@ -77,16 +77,16 @@ def check_more_game():
     def btn_no():
         label = Label(root, text="게임이 종료되었습니다", width=300)
         label.pack()
-    root.geometry("300x50")
+    root.geometry("300x70")
     root.title("한 게임 더❓ ")
     frame = tkinter.Frame(root)
     frame.pack()
     label = Label(frame, text="게임을 한번 더 진행하시겠습니까?", width=300)
     label.pack(side="top")
-    btn_yes = tkinter.Button(frame, text="예", command=btn_yes)
-    btn_no = tkinter.Button(frame, text="아니오", command=btn_no)
-    btn_yes.pack(side="left")
+    btn_yes = tkinter.Button(frame, text="예", command=btn_yes, width=20)
+    btn_no = tkinter.Button(frame, text="아니오", command=btn_no, width=20)
     btn_no.pack(side="right")
+    btn_yes.pack(side="right")
     root.mainloop()
 
 def get_nickname():
