@@ -26,7 +26,7 @@ def result(m):
 
 
 def show_scoreboard():
-    player_list.sort()
+    player_list.sort() #순위 정렬
 
 
 def play(x, y):
@@ -52,7 +52,7 @@ def play(x, y):
             attempt += 1
 
             if img_list[first_pick] == img_list[second_pick]:
-                score+= 1
+                score += 1
                 #정답
                 score_updata("정답")
                 if score == 8:
@@ -96,7 +96,7 @@ def get_nickname():
         print("닉네임: " + nickname)
         window.destroy()
         start_game()
-    window = Tk()  # tkinter 생성
+    window = Tk()
     window.geometry("250x70")
     window.title("닉네임 입력")
     frame = tkinter.Frame(window)
@@ -125,7 +125,9 @@ def start_game():
     t.up()
     t.ht()
     t.goto(0, 280)
-    t.write("🕹 카드 매칭 게임 🕹", False, "center", ("", 30, "bold"))
+    t.addshape(game_title_img)
+    t.shape(game_title_img)
+    t.stamp()
 
     turtles = []
     img_list = []
@@ -169,6 +171,7 @@ def start_game():
 
 
 default_img = "images/default_img.gif"
+game_title_img = "images/card_game_image.gif"
 nickname = "" #player nickname
 player_list = [] #튜플(시도 횟수, 닉네임) 형태로 저장
 
@@ -191,7 +194,9 @@ t.setup(700, 700)
 t.up()
 t.ht()
 t.goto(0, 280)
-t.write("🕹 카드 매칭 게임 🕹", False, "center", ("", 30, "bold"))
+t.addshape(game_title_img)
+t.shape(game_title_img)
+t.stamp()
 
 nickname = "" #player 닉네임
 click_num = 0 #클릭 횟수 (매 2회 클릭마다 정답 체크)
