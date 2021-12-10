@@ -3,9 +3,8 @@ import turtle as t
 import random
 import time
 from tkinter import *
+from PIL import ImageTk, Image
 
-
-# 게임이 시작하기 전에 게임 룰을 설명해주는 것도 좋을 듯
 
 def find_card(x, y):  # 클릭한 카드 찾기
     min_idx = 0
@@ -35,13 +34,34 @@ def show_scoreboard():
     root.geometry("300x70")
     frame = tkinter.Frame(root)
     frame.pack()
-    label_instruction = Label(root, text="점수는 성공까지의 시도 횟수 입니다.", width=300)
+    label_instruction = Label(root, text="📌<점수>는 성공까지의 시도 횟수 입니다.\n", width=300)
     label_instruction.pack()
     num = 1
+    num_img = ""
     for player in player_list:
-        label = Label(root, text=str(num) + "등 " + str(player[0]) + "점    닉네임: " + player[1], width=300)
+        if num == 1: num_img = "🥇"
+        elif num == 2: num_img = "🥈"
+        elif num == 3: num_img = "🥉"
+        label = Label(root, text=" "*3 + "▪ " + num_img + str(num) + "등   " + str(player[0]) + "점    닉네임: " + player[1], width=300)
         label.pack()
         num += 1
+
+def game_rule():
+    def checked():
+        window.destroy()
+        get_nickname()
+    window = Tk()
+    window.geometry("600x450")
+    window.configure(bg='white')
+    window.title("게임 방법")
+    frame = tkinter.Frame(window)
+    frame.pack()
+    img = ImageTk.PhotoImage(file='images/how_to_play.PNG', master=window)
+    label = Label(window, image=img,borderwidth=0)
+    label.pack()
+    button = tkinter.Button(frame, text="게임 시작❕", command=checked, width=20)
+    button.pack(side='bottom')
+    window.mainloop()
 
 
 def play(x, y):
@@ -91,9 +111,6 @@ def check_more_game():
     def btn_yes():
         # 게임 한번 더 진행
         root.destroy()
-        t.reset()
-        for tur in turtles:
-            tur.reset()
         get_nickname()
 
     def btn_no():
@@ -129,11 +146,13 @@ def get_nickname():
     frame.pack()
     label = Label(frame, text="닉네임을 입력해주세요", width=300)
     label.pack()
-    tx_nickname = tkinter.Entry(frame, width=30, bg='light pink')
+    tx_nickname = tkinter.Entry(frame, width=30, bg='#FFE4E1')
     tx_nickname.pack()
     button = tkinter.Button(frame, text="입력완료", command=button_click)
     button.pack()
     window.mainloop()
+    for tur in turtles:
+        tur.reset()
 
 
 def start_game():
@@ -146,6 +165,7 @@ def start_game():
     global second_pick
     global score_pen
 
+    t.reset()
     turtles.clear()
 
     # turtle 객체 생성
@@ -200,6 +220,7 @@ def start_game():
 
 default_img = "images/default_img.gif"
 game_title_img = "images/card_game_image.gif"
+how_to_play_img = "images/how_to_play.gif"
 nickname = ""  # player nickname
 player_list = []  # 튜플(시도 횟수, 닉네임) 형태로 저장
 
@@ -223,5 +244,6 @@ attempt = 0  # 시도한 횟수
 first_pick = ""  # 첫 번째 클릭한 이미지
 second_pick = ""  # 두 번째 클릭한 이미지
 
-# 닉네임 입력받으며 게임 시작
-get_nickname()
+#게임방법 설명 후 시작
+game_rule()
+
