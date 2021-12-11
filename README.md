@@ -6,7 +6,7 @@
 ✔️python   ✔️pyCharm<br><br>
  
  <h4>주요 기술📌<br><br>
-✔️turtle   ✔️tkinter<br><br>
+✔️turtle    ✔️tkinter<br><br>
    
    
  <h4>알고리즘 순서도📋<br><br>
