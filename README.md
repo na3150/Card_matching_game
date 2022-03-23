@@ -1,5 +1,6 @@
-```College lecture "Python Programming" assignment✏️```
-<br>
+```
+College lecture "Python Programming" assignment✏️
+```
 <h2>카드 짝 맞추기 게임🕹️<br>
 
 <h4>개발환경⚙️<br><br>
