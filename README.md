@@ -1,4 +1,4 @@
-<br><h3>College lecture "Python Programming" assignment✏️
+```College lecture "Python Programming" assignment✏️```
 <br>
 <h2>카드 짝 맞추기 게임🕹️<br>
 
